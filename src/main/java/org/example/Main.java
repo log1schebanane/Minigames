@@ -160,6 +160,7 @@ public class Main {
                 System.out.println("Temperatur: "+ temperature + "°C");
             } else {
                 System.out.println("Anfrage Fehlgeschlagen");
+                System.out.println("Überprüfe bitte deine Verbindung");
             }
         } catch (Exception e) {
             e.printStackTrace();
