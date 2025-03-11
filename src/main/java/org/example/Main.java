@@ -134,7 +134,7 @@ public class Main {
         String city = scanner.nextLine();
 
         String apiKey = "c8b095fd9f5b87e6c9ef9b93f9d43087";
-        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
+        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric&lang=de";
 
         try {
             URL url = new URL(urlString);
@@ -156,7 +156,7 @@ public class Main {
                 String weather = weatherData.getJSONArray("weather").getJSONObject(0).getString("description");
                 double temperature = weatherData.getJSONObject("main").getDouble("temp");
 
-                System.out.println("Wetter"+ weather);
+                System.out.println("Wetter "+ weather);
                 System.out.println("Temperatur: "+ temperature + "°C");
             } else {
                 System.out.println("Anfrage Fehlgeschlagen");
