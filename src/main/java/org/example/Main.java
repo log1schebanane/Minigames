@@ -2,11 +2,11 @@ package org.example;
 
 import java.util.Scanner;
 import java.util.Random;
-//import java.io.BufferedReader;
-//import java.io.InputStreamReader;
-//import java.net.HttpURLConnection;
-//import java.net.URL;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,10 +27,10 @@ public class Main {
         } else if (auswahl == 3) {
             passwortGenerator();
 
-        } //else if (auswahl == 4) {
-        //weatherApp();
+        } else if (auswahl == 4) {
+        weatherApp();
 
-        //}
+        }
 
         else {
             System.out.println("Gebe bitte eine gültige Auswahl an");
@@ -128,7 +128,7 @@ public class Main {
         System.out.println("Generiertes Passwort: " + password);
     }
 
-    /*public static void weatherApp() {
+    public static void weatherApp() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Gebe den Namen der Stadt ein: ");
         String city = scanner.nextLine();
@@ -152,14 +152,19 @@ public class Main {
                 }
                 in.close();
 
-                System.out.println("Wetterdaten: " + response.toString());
+                JSONObject weatherData = new JSONObject((response.toString()));
+                String weather = weatherData.getJSONArray("weather").getJSONObject(0).getString("description");
+                double temperature = weatherData.getJSONObject("main").getDouble("temp");
+
+                System.out.println("Wetter"+ weather);
+                System.out.println("Temperatur: "+ temperature + "°C");
             } else {
-                System.out.println("GET-Anfrage fehlgeschlagen");
+                System.out.println("Anfrage Fehlgeschlagen");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
 }
 
